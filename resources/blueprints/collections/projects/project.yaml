@@ -1,0 +1,97 @@
+title: Project
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Card
+        instructions: 'What shows on the homepage before the card is opened.'
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Name
+              required: true
+          -
+            handle: summary
+            field:
+              type: textarea
+              display: One-liner
+              instructions: 'One or two short lines. What it is and who it is for.'
+              character_limit: 160
+              required: true
+          -
+            handle: screenshot
+            field:
+              type: assets
+              display: Main screenshot
+              instructions: 'Wide image works best (16:10).'
+              container: assets
+              folder: projects
+              max_files: 1
+          -
+            handle: stage
+            field:
+              type: button_group
+              display: Status
+              options:
+                live: Live
+                wip: 'In progress'
+              default: live
+          -
+            handle: tags
+            field:
+              type: terms
+              display: Tags
+              taxonomies:
+                - tags
+              create: true
+              mode: select
+      -
+        display: Links
+        fields:
+          -
+            handle: live_url
+            field:
+              type: link
+              display: 'Live site'
+              instructions: 'Usually a subdomain, e.g. https://injuryiq.distortedlogic.co.uk'
+              width: 50
+          -
+            handle: github_url
+            field:
+              type: link
+              display: GitHub
+              width: 50
+      -
+        display: 'Opened card'
+        instructions: 'Shown when someone clicks the card. Keep each one short.'
+        fields:
+          -
+            handle: problem
+            field:
+              type: textarea
+              display: Problem
+              instructions: 'What needed fixing?'
+          -
+            handle: approach
+            field:
+              type: textarea
+              display: 'What I did'
+              instructions: 'Planning, decisions, building.'
+          -
+            handle: result
+            field:
+              type: textarea
+              display: Result
+              instructions: 'Users, time saved, launch, what you learned.'
+          -
+            handle: gallery
+            field:
+              type: assets
+              display: 'More screenshots'
+              instructions: 'Up to 3 extra images.'
+              container: assets
+              folder: projects
+              max_files: 3

@@ -1,0 +1,96 @@
+title: About
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Intro
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: 'Page title'
+              required: true
+          -
+            handle: heading
+            field:
+              type: text
+              display: Heading
+          -
+            handle: photo
+            field:
+              type: assets
+              display: Photo
+              instructions: 'Square works best.'
+              container: assets
+              max_files: 1
+          -
+            handle: intro
+            field:
+              type: list
+              display: 'Intro lines'
+              instructions: 'Two or three short lines. One idea each.'
+      -
+        display: Blocks
+        fields:
+          -
+            handle: how_i_work
+            field:
+              type: list
+              display: 'How I work'
+          -
+            handle: skills
+            field:
+              type: grid
+              display: Skills
+              instructions: 'Each row is a labelled group of badges. The first row is highlighted.'
+              mode: stacked
+              fields:
+                -
+                  handle: label
+                  field:
+                    type: text
+                    display: Label
+                -
+                  handle: items
+                  field:
+                    type: taggable
+                    display: Items
+          -
+            handle: now_title
+            field:
+              type: text
+              display: 'Right now: title'
+              width: 50
+          -
+            handle: now_url
+            field:
+              type: link
+              display: 'Right now: link'
+              width: 50
+          -
+            handle: now_text
+            field:
+              type: text
+              display: 'Right now: one line'
+          -
+            handle: hobbies
+            field:
+              type: list
+              display: 'Outside of code'
+          -
+            handle: cv_note
+            field:
+              type: text
+              display: 'CV line'
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: template
+            field:
+              type: template
+              display: Template

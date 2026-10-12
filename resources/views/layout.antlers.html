@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="{{ site:short_locale }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ if segment_1 }}{{ title | sanitize }} · {{ /if }}Distorted Logic</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+        <link rel="stylesheet" href="/css/site.css?v={{ now format='Ymd' }}">
+    </head>
+    <body>
+        <nav class="top">
+            <div class="container">
+                <a class="wordmark" href="/">distor<span class="glitch" data-c="t">t</span>ed<span class="logic">logic</span></a>
+                <ul>
+                    <li><a href="/#projects" {{ if !segment_1 }}aria-current="page"{{ /if }}>Projects</a></li>
+                    <li><a href="/about" {{ if segment_1 == 'about' }}aria-current="page"{{ /if }}>About</a></li>
+                    {{ if profile:github_url }}<li><a href="{{ profile:github_url }}">GitHub</a></li>{{ /if }}
+                </ul>
+            </div>
+        </nav>
+
+        {{ template_content }}
+
+        <footer>
+            <div class="container">
+                <span>&copy; {{ now format='Y' }} Distorted Logic</span>
+                <ul>
+                    {{ if profile:github_url }}<li><a href="{{ profile:github_url }}">GitHub</a></li>{{ /if }}
+                    {{ if profile:linkedin_url }}<li><a href="{{ profile:linkedin_url }}">LinkedIn</a></li>{{ /if }}
+                    {{ if profile:email }}<li><a href="mailto:{{ profile:email }}">Email</a></li>{{ /if }}
+                </ul>
+            </div>
+        </footer>
+
+        <script src="/js/site.js?v={{ now format='Ymd' }}" defer></script>
+    </body>
+</html>
