@@ -1,12 +1,12 @@
 ---
-title: About
 id: about
-template: about
 blueprint: about
+title: About
+template: about
 heading: 'About me'
 intro:
-  - "I'm Will, based in [your city]."
-  - 'I turn messy problems into working products.'
+  - "I'm Will, based in Colchester"
+  - 'I enjoying solving problems'
   - 'I plan, build and ship, then keep improving.'
 how_i_work:
   - 'Break big problems into small, clear steps'
@@ -44,4 +44,6 @@ hobbies:
   - 'Hobby two'
   - 'Hobby three'
 cv_note: 'Need a CV? Email me and I will send one over.'
+updated_by: f6463773-1980-4a5d-a4d1-07c2dd7b19f3
+updated_at: 1792344945
 ---
