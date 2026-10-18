@@ -86,9 +86,11 @@ class GitSync extends Subscriber
                 'GIT_ASKPASS' => base_path('scripts/git-askpass.sh'),
                 'GIT_SYNC_TOKEN' => config('services.git_sync.token'),
                 'GIT_TERMINAL_PROMPT' => '0',
+                'GIT_CONFIG_GLOBAL' => '/dev/null',
+                'GIT_CONFIG_NOSYSTEM' => '1',
                 'HOME' => storage_path('app'),
             ])
-            ->run(['git', ...$args]);
+            ->run(['git', '-c', 'safe.directory='.base_path(), '-c', 'core.hooksPath=/dev/null', ...$args]);
 
         if ($throw && $result->failed()) {
             Log::error('Git sync: git '.$args[0].' failed', ['output' => $result->errorOutput()]);

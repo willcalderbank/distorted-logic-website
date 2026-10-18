@@ -20,7 +20,6 @@ fi
 
 # php-fpm runs as nobody and must be able to write content and git.
 chmod +x scripts/git-askpass.sh
-chown nobody /app
 chown -R nobody content public/assets resources users storage bootstrap/cache
 [ -d .git ] && chown -R nobody .git
 
