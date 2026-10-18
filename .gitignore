@@ -23,6 +23,8 @@
 /storage/*.key
 /storage/pail
 /vendor
+/users/*
+!/users/.gitkeep
 _ide_helper.php
 Homestead.json
 Homestead.yaml

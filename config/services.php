@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'git_sync' => [
+        'token' => env('GIT_SYNC_TOKEN'),
+    ],
+
 ];
