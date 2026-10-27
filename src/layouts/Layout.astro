@@ -43,9 +43,7 @@ const version = now.toISOString().slice(0, 10).replaceAll('-', '');
                 <ul>
                     {profile.github_url && <li><a href={profile.github_url}>GitHub</a></li>}
                     {profile.linkedin_url && <li><a href={profile.linkedin_url}>LinkedIn</a></li>}
-                    {profile.email && <li><a href={`mailto:${profile.email}`}>Email</a></li>}
-                    <li><a href="https://ko-fi.com/distortedlogic">Support me</a></li>
-                </ul>
+                    {profile.email && <li><a href={`mailto:${profile.email}`}>Email</a></li>}                </ul>
             </div>
         </footer>
 
