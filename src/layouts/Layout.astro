@@ -44,12 +44,10 @@ const version = now.toISOString().slice(0, 10).replaceAll('-', '');
                     {profile.github_url && <li><a href={profile.github_url}>GitHub</a></li>}
                     {profile.linkedin_url && <li><a href={profile.linkedin_url}>LinkedIn</a></li>}
                     {profile.email && <li><a href={`mailto:${profile.email}`}>Email</a></li>}
+                    <li><a href="https://ko-fi.com/distortedlogic">Support me</a></li>
                 </ul>
             </div>
         </footer>
 
-        <script is:inline src={`/js/site.js?v=${version}`} defer></script>
-        <script is:inline src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
-        <script is:inline>kofiWidgetOverlay.draw('distortedlogic', {'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
-    </body>
+        <script is:inline src={`/js/site.js?v=${version}`} defer></script>    </body>
 </html>
