@@ -1,0 +1,18 @@
+<section class="hello">
+    <div class="container">
+        <div>
+            <h1>{{ title }}</h1>
+            {{ content }}
+        </div>
+    </div>
+</section>
+
+<section class="projects-section">
+    <div class="container">
+        <div class="projects" data-projects>
+            {{ collection:prints }}
+                {{ partial:card }}
+            {{ /collection:prints }}
+        </div>
+    </div>
+</section>

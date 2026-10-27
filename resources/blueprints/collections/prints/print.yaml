@@ -1,0 +1,78 @@
+title: Print
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Card
+        instructions: 'What shows on the 3D prints page before the card is opened.'
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Name
+              required: true
+          -
+            handle: summary
+            field:
+              type: textarea
+              display: One-liner
+              instructions: 'One or two short lines. What it makes and who it is for.'
+              character_limit: 160
+              required: true
+          -
+            handle: screenshot
+            field:
+              type: assets
+              display: Main image
+              instructions: 'Wide image works best.'
+              container: assets
+              folder: prints
+              max_files: 1
+          -
+            handle: stage
+            field:
+              type: button_group
+              display: Status
+              options:
+                live: Live
+                wip: 'In progress'
+              default: live
+      -
+        display: Links
+        fields:
+          -
+            handle: live_url
+            field:
+              type: link
+              display: 'Live site'
+              instructions: 'e.g. https://gutters.distortedlogic.co.uk'
+      -
+        display: 'Opened card'
+        instructions: 'Shown when someone clicks the card. Keep each one short.'
+        fields:
+          -
+            handle: problem
+            field:
+              type: textarea
+              display: Problem
+          -
+            handle: approach
+            field:
+              type: textarea
+              display: 'What I did'
+          -
+            handle: result
+            field:
+              type: textarea
+              display: Result
+          -
+            handle: gallery
+            field:
+              type: assets
+              display: 'More images'
+              instructions: 'Up to 3 extra images.'
+              container: assets
+              folder: prints
+              max_files: 3
