@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import profile from '../data/profile.json';
+
+const intro = [
+    "I'm Will, based in Colchester",
+    'I enjoy solving problems',
+    'Learning new skills is fun',
+];
+---
+<Layout title="About" current="about">
+    <section class="intro">
+        <div class="container">
+            <div class="photo">
+                <span aria-hidden="true">{profile.initial}</span>
+            </div>
+            <div>
+                <h1>About me</h1>
+                <ul class="lead">{intro.map((line) => <li>{line}</li>)}</ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-blocks">
+        <div class="container">
+            <section class="block">
+                <h2>Say hello</h2>
+                <div class="block-body">
+                    <div class="contact">
+                        {profile.email && <button type="button" class="btn primary" data-copy-email>Copy email</button>}
+                        {profile.github_url && <a class="btn" href={profile.github_url}>GitHub</a>}
+                        {profile.linkedin_url && <a class="btn" href={profile.linkedin_url}>LinkedIn</a>}
+                    </div>
+                    {profile.email && <span class="email" data-email>{profile.email}</span>}
+                    <p class="cv">Need a CV? Email me and I will send one over.</p>
+                </div>
+            </section>
+        </div>
+    </section>
+</Layout>

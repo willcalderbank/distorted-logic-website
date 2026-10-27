@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+const prints = (await getCollection('prints')).sort((a, b) => a.data.order - b.data.order);
+---
+<Layout title="3D prints">
+    <section class="hello">
+        <div class="container">
+            <div>
+                <h1>3D prints</h1>
+                <p>Parametric OpenSCAD models you can size and download in the browser. Every site is built from one custom template and my own workbench library, which gives each model a live 3D preview and a standard way to set its parameters.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section">
+        <div class="container">
+            <div class="projects" data-projects>
+                {prints.map((entry) => <Card entry={entry} />)}
+            </div>
+        </div>
+    </section>
+</Layout>

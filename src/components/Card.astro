@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getEntries } from 'astro:content';
+
+interface Props {
+    entry: CollectionEntry<'projects'> | CollectionEntry<'prints'>;
+}
+
+const { entry } = Astro.props;
+const { id } = entry;
+const data = entry.data;
+const tags = await getEntries(data.tags.map((t) => ({ collection: 'tags' as const, id: t })));
+
+const escape = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+const nl2br = (s: string) => escape(s).replace(/\r?\n/g, '<br />\n');
+const story = [
+    ['Problem', data.problem],
+    ['What I did', data.approach],
+    ['Result', data.result],
+].filter(([, text]) => text) as [string, string][];
+---
+<article class="project" data-tags={tags.map((t) => `${t.id} `).join('')}>
+    <div class="row" tabindex="0" role="button" aria-expanded="false" aria-controls={`detail-${id}`}>
+        {data.screenshot
+            ? <div class="shot"><img src={data.screenshot} alt="" loading="lazy"></div>
+            : <div class="shot placeholder" aria-hidden="true"></div>}
+        <div class="info">
+            <div class="title-row">
+                <h3>{data.title}</h3>
+                {data.stage === 'wip'
+                    ? <span class="pill wip">In progress</span>
+                    : <span class="pill live">Live</span>}
+            </div>
+            <p>{data.summary}</p>
+            <div class="meta">
+                {tags.map((t) => <button type="button" class="tag" data-tag={t.id}>{t.data.title}</button>)}
+            </div>
+            <span class="more"><span class="more-label">More</span> <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg></span>
+        </div>
+        <div class="links">
+            {data.live_url && (
+                <a class="btn primary" href={data.live_url}>Visit <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></a>
+            )}
+            {data.github_url && (
+                <a class="btn" href={data.github_url}><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5.5 4 2 8l3.5 4M10.5 4 14 8l-3.5 4"/></svg> GitHub</a>
+            )}
+        </div>
+    </div>
+    <div class="detail" id={`detail-${id}`}>
+        <div class="detail-inner">
+            <div class="detail-body">
+                <div class="story">
+                    {story.map(([heading, text]) => <div><h4>{heading}</h4><p set:html={nl2br(text)} /></div>)}
+                </div>
+                {data.gallery.length > 0 && (
+                    <div class="gallery">
+                        {data.gallery.map((img) => <div class="shot"><img src={img.src} alt={img.alt} loading="lazy"></div>)}
+                    </div>
+                )}
+            </div>
+        </div>
+    </div>
+</article>

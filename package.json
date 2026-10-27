@@ -1,20 +1,13 @@
 {
-    "$schema": "https://www.schemastore.org/package.json",
+    "name": "distortedlogic-website",
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
-        "dev": "vite",
-        "watch": "vite"
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview"
     },
-    "devDependencies": {
-        "@tailwindcss/vite": "^4.0.6",
-        "concurrently": "^10.0.3",
-        "laravel-vite-plugin": "^3.1",
-        "tailwindcss": "^4.0.6",
-        "vite": "^8.0.0"
-    },
-    "optionalDependencies": {
-        "@laravel/multiplex": "^0.4.1"
+    "dependencies": {
+        "astro": "^7.4.2"
     }
 }

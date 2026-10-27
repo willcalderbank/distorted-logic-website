@@ -1,5 +1,0 @@
-[phases.setup]
-nixpkgsArchive = "544700df98a4753af0b1610f4cc1847393a65551"
-
-[start]
-cmd = "bash /app/scripts/server-start.sh"

@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import profile from '../data/profile.json';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const usedTags = new Set(projects.flatMap((p) => p.data.tags));
+const tags = (await getCollection('tags'))
+    .filter((t) => usedTags.has(t.id))
+    .sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+<Layout current="home">
+    <section class="hello">
+        <div class="container">
+            <div class="avatar" aria-hidden="true">{profile.initial}</div>
+            <div>
+                <h1>Hi, I'm Will.</h1>
+                <p>I enjoy learning new skills and solving problems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <div class="section-head">
+                <h2>Projects</h2>
+                <div class="filters" role="group" aria-label="Filter by tag">
+                    <button type="button" class="filter" data-tag="all" aria-pressed="true">All</button>
+                    {tags.map((t) => <button type="button" class="filter" data-tag={t.id} aria-pressed="false">{t.data.title}</button>)}
+                </div>
+            </div>
+
+            <div class="projects" data-projects>
+                {projects.map((entry) => <Card entry={entry} />)}
+                <p class="empty" data-empty hidden>No projects with that tag.</p>
+            </div>
+        </div>
+    </section>
+</Layout>

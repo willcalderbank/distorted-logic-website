@@ -1,0 +1,55 @@
+---
+import profile from '../data/profile.json';
+
+interface Props {
+    title?: string;
+    current?: 'home' | 'about';
+}
+
+const { title, current } = Astro.props;
+const now = new Date();
+const version = now.toISOString().slice(0, 10).replaceAll('-', '');
+---
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{title ? `${title} · ` : ''}Distorted Logic</title>
+        <link rel="icon" href="/favicon.ico">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+        <link rel="stylesheet" href={`/css/site.css?v=${version}`}>
+        <script is:inline defer src="https://stats.distortedlogic.co.uk/script.js" data-website-id="a3d68f6e-e20a-4a40-9ae8-088b187c60a8" data-domains="distortedlogic.co.uk,www.distortedlogic.co.uk"></script>
+    </head>
+    <body>
+        <nav class="top">
+            <div class="container">
+                <a class="wordmark" href="/"><span class="distorted" data-c="distorted">distorted</span><span class="logic">logic</span></a>
+                <ul>
+                    <li><a href="/#projects" aria-current={current === 'home' ? 'page' : undefined}>Projects</a></li>
+                    <li><a href="/about" aria-current={current === 'about' ? 'page' : undefined}>About</a></li>
+                    {profile.github_url && <li><a href={profile.github_url}>GitHub</a></li>}
+                </ul>
+            </div>
+        </nav>
+
+        <slot />
+
+        <footer>
+            <div class="container">
+                <span>&copy; {now.getFullYear()} Distorted Logic</span>
+                <ul>
+                    {profile.github_url && <li><a href={profile.github_url}>GitHub</a></li>}
+                    {profile.linkedin_url && <li><a href={profile.linkedin_url}>LinkedIn</a></li>}
+                    {profile.email && <li><a href={`mailto:${profile.email}`}>Email</a></li>}
+                </ul>
+            </div>
+        </footer>
+
+        <script is:inline src={`/js/site.js?v=${version}`} defer></script>
+        <script is:inline src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+        <script is:inline>kofiWidgetOverlay.draw('distortedlogic', {'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
+    </body>
+</html>

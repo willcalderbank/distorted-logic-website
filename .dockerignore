@@ -1,0 +1,13 @@
+.git
+.claude
+.astro
+.env
+node_modules
+dist
+# Statamic leftovers that stay on disk from the old `live` branch
+bootstrap
+database
+storage
+vendor
+public/build
+public/vendor
